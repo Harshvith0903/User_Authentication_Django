@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #totalSalary {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Welcome, {{ username2 }}</h1>
+    <h2>User List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in login %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td class="salary">{{ item.salary }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        function TotalSalary() {
+            const totalSalaryElement = document.getElementById('totalSalary');
+            if (totalSalaryElement.style.display === 'none') {
+                totalSalaryElement.style.display = 'block';
+            } else {
+                totalSalaryElement.style.display = 'none';
+            }
+        }
+    </script>
+
+
+    <button onclick="TotalSalary()">Total Salary</button>
+    
+    <p id="totalSalary">Total Salary: {{ total_salary }}</p>
+    
+</body>
+</html>
